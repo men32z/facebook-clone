@@ -91,6 +91,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
+    pg (1.1.4)
     puma (4.3.0)
       nio4r (~> 2.0)
     rack (2.0.7)
@@ -150,7 +151,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.1)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -181,12 +181,12 @@ DEPENDENCIES
   byebug
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  pg
   puma (~> 4.1)
   rails (~> 6.0.1)
   sass-rails (>= 6)
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

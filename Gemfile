@@ -8,6 +8,19 @@ gem 'rails', '~> 6.0.1'
 
 gem 'pg'
 
+group :development, :test do
+  # The RSpec testing framework
+  gem 'rspec-rails', '~> 4.0.0.beta3'
+
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
+
+  # The following two gems aid with the nuts and bolts
+  # of interacting with the browser.
+  gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 3.0'
+end
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

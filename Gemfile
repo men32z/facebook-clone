@@ -8,6 +8,8 @@ gem 'rails', '~> 6.0.1'
 
 gem 'pg'
 
+gem 'devise'
+
 group :development, :test do
   # The RSpec testing framework
   gem 'rspec-rails', '~> 4.0.0.beta3'

@@ -12,6 +12,8 @@ gem 'pg'
 
 gem 'devise'
 
+gem 'omniauth-facebook'
+
 group :development, :test do
   # The RSpec testing framework
   gem 'rspec-rails', '~> 4.0.0.beta3'

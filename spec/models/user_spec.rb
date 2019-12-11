@@ -73,5 +73,4 @@ RSpec.describe User, type: :model do
     new_user.password = '12345'
     expect(new_user).to_not be_valid
   end
-
 end

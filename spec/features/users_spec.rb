@@ -34,18 +34,18 @@ RSpec.describe 'Users feature', type: :feature do
     fill_in 'user_password', with: user_valid[:password]
     click_button 'Log in'
     expect(page).to have_content user.name
-    expect(page).to have_content "Log Out"
+    expect(page).to have_content 'Log Out'
   end
 
   scenario 'User fails log in' do
     user = User.create(user_valid)
     visit new_user_session_path
 
-    fill_in 'user_email', with: user.email+"a"
-    fill_in 'user_password', with: user_valid[:password]+"a"
+    fill_in 'user_email', with: user.email + 'a'
+    fill_in 'user_password', with: user_valid[:password] + 'a'
     click_button 'Log in'
     expect(page).to_not have_content user.name
-    expect(page).to_not have_content "Log Out"
+    expect(page).to_not have_content 'Log Out'
   end
 
   scenario 'User registers succesfully' do

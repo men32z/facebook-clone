@@ -27,11 +27,37 @@ RSpec.describe 'Users feature', type: :feature do
   end
 
   scenario 'User correctly logs in' do
-    user = user.create(user_valid)
+    user = User.create(user_valid)
     visit new_user_session_path
 
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user_valid[:password]
     click_button 'Log in'
+    expect(page).to have_content user.name
+    expect(page).to have_content "Log Out"
+  end
+
+  scenario 'User fails log in' do
+    user = User.create(user_valid)
+    visit new_user_session_path
+
+    fill_in 'user_email', with: user.email+"a"
+    fill_in 'user_password', with: user_valid[:password]+"a"
+    click_button 'Log in'
+    expect(page).to_not have_content user.name
+    expect(page).to_not have_content "Log Out"
+  end
+
+  scenario 'User registers succesfully' do
+    visit new_user_registration_path
+    expect do
+      fill_in 'user_name', with: user_valid[:name]
+      fill_in 'user_email', with: user_valid[:email]
+      fill_in 'user_password', with: user_valid[:password]
+      fill_in 'user_password_confirmation', with: user_valid[:password_confirmation]
+      click_button 'Sign up'
+    end.to change(User, :count).by(1)
+    user = User.last
+    expect(user.name).to eq(user_valid[:name])
   end
 end

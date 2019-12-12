@@ -5,7 +5,7 @@
     5 A User must accept the Friend Request to become friends.
     6 The Friend Request shows up in the notifications section of a User’s navbar.
     DO 7 Users can create Posts (text only to start).
-      TODO models and post models should create test
+    6.1 COMPLETED  TODO models and post models should create test
     8 Users can Like Posts.
     9 Users can Comment on Posts.
     DO 10 Posts should always display with the post content, author, comments and likes.

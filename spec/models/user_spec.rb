@@ -73,4 +73,13 @@ RSpec.describe User, type: :model do
     new_user.password = '12345'
     expect(new_user).to_not be_valid
   end
+
+  it "it can show posts" do
+    user = User.create(valid_user)
+    example_text = "asdf"
+    expect do
+      user.posts.create({content:example_text})
+    end.to change(Post, :count).by(1)
+    expect(user.posts.last.content).to eq(example_text)
+  end
 end

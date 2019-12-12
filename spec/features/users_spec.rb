@@ -7,6 +7,8 @@ RSpec.describe 'Users feature', type: :feature do
     has_x = { name: 'Mike', email: 'mike@monstersinc.com' }
     has_x[:password] = 'wasausky'
     has_x[:password_confirmation] = 'wasausky'
+    has_x[:bio] = 'born in some year in some place'
+    has_x[:photo] = 'photo string'
     has_x
   end
 
@@ -59,5 +61,16 @@ RSpec.describe 'Users feature', type: :feature do
     end.to change(User, :count).by(1)
     user = User.last
     expect(user.name).to eq(user_valid[:name])
+  end
+
+  scenario 'User profile renders properly' do
+    user = User.create(user_valid)
+    Post.create(user_id: user.id, content: 'Lorem Impsum')
+    visit user_path(user)
+    expect(page).to have_content user.name
+    expect(page).to have_content user.bio
+    expect(page).to have_content user.photo
+    expect(page).to have_content user.post.last.content
+    assert_selector "img [href = '#{user.photo}']"
   end
 end

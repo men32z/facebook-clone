@@ -74,11 +74,11 @@ RSpec.describe User, type: :model do
     expect(new_user).to_not be_valid
   end
 
-  it "it can show posts" do
+  it 'it can show posts' do
     user = User.create(valid_user)
-    example_text = "asdf"
+    example_text = 'asdf'
     expect do
-      user.posts.create({content:example_text})
+      user.posts.create(content: example_text)
     end.to change(Post, :count).by(1)
     expect(user.posts.last.content).to eq(example_text)
   end

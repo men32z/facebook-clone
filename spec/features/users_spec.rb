@@ -71,4 +71,27 @@ RSpec.describe 'Users feature', type: :feature do
     expect(page).to have_content user.posts.last.content
     assert_selector "img[src = '#{user.photo}']"
   end
+
+  scenario 'User edit form renders properly' do
+    user = User.create(user_valid)
+    visit edit_user_path(user)
+    assert_selector "input[name= 'user[name]']"
+    assert_selector "textarea[name='user[bio]']"
+    assert_selector "input[name='user[photo]']"
+  end
+
+  scenario 'User can edit their profile' do
+    user = User.create(user_valid)
+    fake_user = {name:"Fake name", bio:"nice bio", photo:"/filename.jpg"}
+    visit edit_user_path(user)
+    fill_in "user_name", with: fake_user[:name]
+    fill_in "user_bio", with: fake_user[:bio]
+    fill_in "user_photo", with: fake_user[:photo]
+    click_button "Update Profile"
+
+    expect(current_path).to eq(user_path(user))
+    expect(page).to have_content fake_user[:name]
+    expect(page).to have_content fake_user[:bio]
+    assert_selector "img[src='#{fake_user[:photo]}']"
+  end
 end

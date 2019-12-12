@@ -1,20 +1,28 @@
 <% provide(:title, @user.name)  %>
-  <div>
-    <%= image_tag '/filename.jpg' %>
-    <%= image_tag @user.photo, alt: @user.name %>
-    <div class = "row">
-      <div class="col-12 col-md-4 col-lg-3"> 
-    <p><%= @user.name %></p>
-    <p><%= @user.bio %></p>
-        <h3> Friends </h3>
+  <div class="container">
+    <div class="row profile-header">
+      <div class="col-12">
+        <%= image_tag @user.photo, alt: @user.name %>
+        <h2><%= @user.name %></h2>
       </div>
-      <div class="col-12 col-md-8 col-lg-9"> 
-        <h3> Posts </h3>
-        <%= @user.posts.each do | post | %>
-          <div>
-            <%= post.content %>
-          </div>
-        <% end %>
+    </div>
+    <div class ="row mt-4">
+      <div class="col-12 col-md-4 col-lg-3 mt-4">
+        <div class="col-12 bg-white">
+          <p><%= @user.bio %></p>
+          <h3> Friends </h3>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-9 mt-4">
+        <div class="col-12 bg-white">
+          <h3> Posts </h3>
+          <%= @user.posts.each do | post | %>
+            <div>
+              <%= post.content %>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>

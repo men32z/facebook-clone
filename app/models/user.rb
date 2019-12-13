@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50, minimum: 2 }
   validates :email, length: { maximum: 255 }
   has_many :posts
+  has_many :likes
+  has_many :comments
 
   private
 

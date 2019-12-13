@@ -4,18 +4,18 @@ class UsersController < ApplicationController
   def show
     @post = Post.new
     @user = User.find_by(id: params[:id])
-    unless @user
-      flash.now[:danger] = 'user not found'
-      redirect_to root_path
-    end
+    return if @user
+
+    flash.now[:danger] = 'user not found'
+    redirect_to root_path
   end
 
   def edit
     @user = User.find_by(id: params[:id])
-    unless @user
-      flash.now[:danger] = 'user not found'
-      redirect_to root_path
-    end
+    return if @user
+
+    flash.now[:danger] = 'user not found'
+    redirect_to root_path
   end
 
   def update

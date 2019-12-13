@@ -9,6 +9,5 @@ class PagesController < ApplicationController
     else
       render 'index'
     end
-
   end
 end

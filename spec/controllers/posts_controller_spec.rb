@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
@@ -13,7 +15,7 @@ RSpec.describe PostsController, type: :controller do
       user = User.create(user_valid)
       sign_in user
       content = 'content example'
-      post :create, params: {post: { content: content } }
+      post :create, params: { post: { content: content } }
       expect(response).to have_http_status(302)
       expect(Post.last.content).to eq(content)
     end

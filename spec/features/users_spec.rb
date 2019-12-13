@@ -85,12 +85,12 @@ RSpec.describe 'Users feature', type: :feature do
   scenario 'User can edit their profile' do
     user = User.create(user_valid)
     sign_in user
-    fake_user = {name:"Fake name", bio:"nice bio", photo:"/filename.jpg"}
+    fake_user = { name: 'Fake name', bio: 'nice bio', photo: '/filename.jpg' }
     visit edit_user_path(user)
-    fill_in "user_name", with: fake_user[:name]
-    fill_in "user_bio", with: fake_user[:bio]
-    fill_in "user_photo", with: fake_user[:photo]
-    click_button "Update Profile"
+    fill_in 'user_name', with: fake_user[:name]
+    fill_in 'user_bio', with: fake_user[:bio]
+    fill_in 'user_photo', with: fake_user[:photo]
+    click_button 'Update Profile'
 
     expect(current_path).to eq(user_path(user))
     expect(page).to have_content fake_user[:name]

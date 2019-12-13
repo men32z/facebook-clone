@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :posts
 
   private
+
   def set_default_img
     self.photo = '/default_profile.jpg'
   end

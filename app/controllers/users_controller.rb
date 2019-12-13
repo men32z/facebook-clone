@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController
   def show
+    @post = Post.new
     @user = User.find_by(id: params[:id])
     unless @user
       flash.now[:danger] = 'user not found'

@@ -3,9 +3,9 @@
     <%= image_tag( @user.photo, width: 40, height: 40 ) %>
   </div>
   <div class='col-10 col-md-11'>
-    <%= form_with url: posts_path, method: 'post' do |f| %>
-    <%= f.label :post %>
-    <%= f.text_area :post, class: 'form-control' %>
+    <%= form_with model: @post, local: true do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content, class: 'form-control' %>
     <%= f.submit 'Create post', class: 'btn btn-success' %>
     <% end %>
   </div>

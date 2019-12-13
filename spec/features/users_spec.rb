@@ -64,6 +64,7 @@ RSpec.describe 'Users feature', type: :feature do
 
   scenario 'User profile renders properly' do
     user = User.create(user_valid)
+    sign_in user
     Post.create(user_id: user.id, content: 'Lorem Impsum')
     visit user_path(user)
     expect(page).to have_content user.name
@@ -74,6 +75,7 @@ RSpec.describe 'Users feature', type: :feature do
 
   scenario 'User edit form renders properly' do
     user = User.create(user_valid)
+    sign_in user
     visit edit_user_path(user)
     assert_selector "input[name= 'user[name]']"
     assert_selector "textarea[name='user[bio]']"
@@ -82,6 +84,7 @@ RSpec.describe 'Users feature', type: :feature do
 
   scenario 'User can edit their profile' do
     user = User.create(user_valid)
+    sign_in user
     fake_user = {name:"Fake name", bio:"nice bio", photo:"/filename.jpg"}
     visit edit_user_path(user)
     fill_in "user_name", with: fake_user[:name]

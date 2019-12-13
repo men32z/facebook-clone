@@ -15,20 +15,19 @@ RSpec.describe 'Post feature', type: :feature do
     user = User.create(user_valid)
     sign_in(user)
     visit user_path(user)
-    expect(page).to have_content 'Create post'
     assert_selector "input[type='submit']"
     assert_selector "input[value='Create post']"
-    assert_selector "textarea[name='Post[content]']"
+    assert_selector "textarea[name='post[content]']"
   end
 
   scenario ' Form for post in the timeline is complete' do
     user = User.create(user_valid)
     sign_in(user)
     visit root_path
-    expect(page).to have_content 'Create post'
+
     assert_selector "input[type='submit']"
     assert_selector "input[value='Create post']"
-    assert_selector "textarea[name='Post[content]']"
+    assert_selector "textarea[name='post[content]']"
   end
 
   scenario 'A created post should display author in timeline' do
@@ -45,7 +44,7 @@ RSpec.describe 'Post feature', type: :feature do
   scenario 'A created post should display author in profile' do
     user = User.create(user_valid)
     sign_in(user)
-    visit  user_path(user)
+    visit user_path(user)
     example_post = 'Example text'
     fill_in 'post_content', with: example_post
     click_button 'Create post'

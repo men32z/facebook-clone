@@ -10,7 +10,7 @@ RSpec.describe Comment, type: :model do
 
   it 'it should be valid with valid attributes' do
     user = User.create(valid_user)
-    post = Post.new(content: 'asdf', user_id: user.id)
+    post = Post.create(content: 'asdf', user_id: user.id)
     comment = Comment.new(content: 'Comment example', user_id: user.id, post_id: post.id)
     expect(comment).to be_valid
     comment.content = 'a' * 140
@@ -21,8 +21,8 @@ RSpec.describe Comment, type: :model do
 
   it 'it should not be valid with empty content or more than 140 characters' do
     user = User.create(valid_user)
-    post = Post.new(content: 'asdf', user_id: user.id)
-    comment = Comment.new(content: 'Comment example', user_id: user.id, post_id: post.id)
+    post = Post.create(content: 'asdf', user_id: user.id)
+    comment = Comment.new(user_id: user.id, post_id: post.id)
     expect(comment).to_not be_valid
     comment.content = ''
     expect(comment).to_not be_valid
@@ -32,14 +32,14 @@ RSpec.describe Comment, type: :model do
 
   it 'should show user' do
     user = User.create(valid_user)
-    post = Post.new(content: 'asdf', user_id: user.id)
+    post = Post.create(content: 'asdf', user_id: user.id)
     comment = Comment.new(content: 'Comment example', user_id: user.id, post_id: post.id)
     expect(comment.user.id).to eq(user.id)
   end
 
   it 'should have a post' do
     user = User.create(valid_user)
-    post = Post.new(content: 'asdf', user_id: user.id)
+    post = Post.create(content: 'asdf', user_id: user.id)
     comment = Comment.new(content: 'Comment example', user_id: user.id, post_id: post.id)
     expect(comment.post.id).to eq(post.id)
   end

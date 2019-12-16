@@ -1,9 +1,10 @@
 <div>
   <%= post.content %>
   <p>Author: <%= post.user.name %> </p>
-  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <i class="material-icons">thumb_up</i>
+  <span class="likes"><%= post.likes.count %></span>
   <div>
-    <%= render 'comments/new'%>
+    <%= render 'comments/new', post_id: post.id %>
     <%= render post.comments %>
   </div>
 </div>

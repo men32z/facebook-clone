@@ -4,6 +4,7 @@
   </div>
   <div class='col-10 col-md-11'>
     <%= form_with model: @comment, local: true do |f| %>
+    <%= f.text_field :post_id, type: 'hidden', value: post_id %>
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control' %>
     <%= f.submit 'Create comment', class: 'btn btn-success' %>

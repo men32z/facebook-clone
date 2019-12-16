@@ -52,5 +52,15 @@ RSpec.describe 'Post feature', type: :feature do
     expect(page).to have_content user.name
   end
 
-  scenario 'post should display likes and comments'
+  scenario 'post should display likes and comments on timeline' do
+    #forever alone method
+    user = User.create(user_valid)
+    sign_in(user)
+    post = user.posts.create(content:'this is a post')
+    comment = post.comments.create(content:'this is a comment', user_id: user.id)
+    Like.create(user_id: user.id, post_id: post.id)
+    visit root_path
+    expect(page).to have_content comment.content
+    assert_selector "span[class='likes']", text: '1'
+  end
 end

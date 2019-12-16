@@ -1,0 +1,45 @@
+
+@import "bootstrap/scss/bootstrap";
+
+body {
+  background-color: #e9ebee;
+}
+
+.navbar {
+  background-color: #4267B2;
+}
+
+.profile-header{
+  position: relative;
+  height: 315px;
+  background-image: url('/filename.jpg');
+  background-size: cover;
+  
+  img {
+    bottom: 0;
+    margin-bottom: -45px;
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+  }
+
+  h2 {
+    color:white;
+    bottom: 10px;
+    left: 200px;
+    position: absolute;
+  }
+
+  a {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: white;
+    color: #4267B2;
+    border: none;
+  }
+}
+

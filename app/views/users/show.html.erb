@@ -1,0 +1,28 @@
+<% provide(:title, @user.name)  %>
+  <div class="container">
+    <div class="row profile-header">
+      <div class="col-12">
+        <%= image_tag @user.photo, alt: @user.name %>
+        <h2><%= @user.name %></h2>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit Profile', edit_user_path(current_user), class:'btn btn-info' %>
+        <% end %>
+      </div>
+    </div>
+    <div class ="row mt-4">
+      <div class="col-12 col-md-4 col-lg-3 mt-4">
+        <div class="col-12 bg-white">
+          <p>A little about me: <br> <%= @user.bio %></p>
+          <h3> Friends </h3>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 col-lg-9 mt-4">
+        <div class="col-12 bg-white pt-3">
+          <%= render 'posts/new' %>
+          <h3> My Post </h3>
+          <%= render @user.posts.reverse_order %>
+        </div>
+
+      </div>
+    </div>
+  </div>

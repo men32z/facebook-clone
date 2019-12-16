@@ -3,11 +3,10 @@
     <%= image_tag( current_user.photo, width: 40, height: 40 ) %>
   </div>
   <div class='col-10 col-md-11'>
-    <%= form_with model: @comment, local: true do |f| %>
+    <%= form_with model: @comment, local: true, class: 'form-inline col-12' do |f| %>
     <%= f.text_field :post_id, type: 'hidden', value: post_id %>
-    <%= f.label :content %>
-    <%= f.text_area :content, class: 'form-control' %>
-    <%= f.submit 'Create comment', class: 'btn btn-success' %>
+    <%= f.text_field :content, class: 'form-control col-9' %>
+    <%= f.submit 'comment', class: 'btn btn-success col-3' %>
     <% end %>
   </div>
 </div>

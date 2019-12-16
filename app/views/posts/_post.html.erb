@@ -1,10 +1,18 @@
-<div>
-  <%= post.content %>
-  <p>Author: <%= post.user.name %> </p>
-  <i class="material-icons">thumb_up</i>
-  <span class="likes"><%= post.likes.count %></span>
-  <div>
-    <%= render 'comments/new', post_id: post.id %>
-    <%= render post.comments %>
+<div class="col-12 row mb-5">
+  <div class="col-12">
+    <%= image_tag( post.user.photo, width: 40, height: 40 ) %>
+    <b class="ml-3"> <%= post.user.name %> </b>
   </div>
+  <div class="col-12">
+    <p class="ml-5 pl-3"><%= post.content %></p>
+    <br>
+    <%= link_to "like", likes_path(post_id: post.id), method: 'post' %>
+    <i class="material-icons">thumb_up</i>
+    <span class="likes"><%= post.likes.count %></span>
+    <hr>
+  </div>
+   <div class="col-11 offset-1">
+     <%= render post.comments %>
+     <%= render 'comments/new', post_id: post.id %>
+   </div>
 </div>

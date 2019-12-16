@@ -1,7 +1,5 @@
-<div>
-  <%= comment.content %>
-  <div>
-    <%= comment.user.photo %>
-    <%= comment.user.name %>
-  </div>
+<div class="col-12 row mb-3">
+  <%= image_tag( comment.user.photo, width: 40, height: 40 ) %>
+  <b class="ml-2"><%= comment.user.name %></b>
+  <span class="ml-2"><%= comment.content %></span>
 </div>

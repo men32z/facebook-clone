@@ -63,4 +63,10 @@ RSpec.describe 'Post feature', type: :feature do
     expect(page).to have_content comment.content
     assert_selector "span[class='likes']", text: '1'
   end
+
+  scenario 'user should like only once on each post'
+
+  scenario 'user create a comment successfully in a post'
+
+  scenario 'user likes successfully a post'
 end

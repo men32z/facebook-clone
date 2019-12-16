@@ -97,4 +97,12 @@ RSpec.describe 'Users feature', type: :feature do
     expect(page).to have_content fake_user[:bio]
     assert_selector "img[src='#{fake_user[:photo]}']"
   end
+
+  scenario 'Index Should show the list of users' do
+    user = User.create(user_valid)
+    visit users_path
+    expect(page).to have_content user.name
+    assert_selector "a[href='#{user_path(user)}']"
+    assert_selector "button[class='friend_request']"
+  end
 end

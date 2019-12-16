@@ -16,7 +16,7 @@ RSpec.describe LikesController, type: :controller do
       sign_in user
       user_post = user.posts.create(content: 'Example Post')
       expect do
-        post :create, params: {post_id: user_post.id}
+        post :create, params: { post_id: user_post.id }
         expect(response).to have_http_status(302)
       end.to change(Like, :count).by(1)
     end

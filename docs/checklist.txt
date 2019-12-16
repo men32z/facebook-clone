@@ -4,11 +4,11 @@
     4 Users can send Friend Requests to other Users.
     5 A User must accept the Friend Request to become friends.
     6 The Friend Request shows up in the notifications section of a User’s navbar.
-    7 COMPLETED
     6.1 COMPLETED
-    8 DO Users can Like Posts.
-    9 DO Users can Comment on Posts.
-    10 DO Posts should always display with the post content, author, comments and likes.
+    7 COMPLETED
+    8 COMPLETED
+    9 COMPLETED
+    10 COMPLETED
     11 Treat the Posts Index page like the real Facebook’s “Timeline” feature – show all the recent posts from the current user and users she is friends with.
     12 COMPLETED
     13 COMPLETED

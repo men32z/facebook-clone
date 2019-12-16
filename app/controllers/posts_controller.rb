@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-
   def create
     post = Post.new(post_params)
     post.user_id = current_user.id

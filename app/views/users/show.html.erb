@@ -19,8 +19,8 @@
       <div class="col-12 col-md-8 col-lg-9 mt-4">
         <div class="col-12 bg-white pt-3">
           <%= render 'posts/new' %>
-          <h3> Timeline </h3>
-          <%= render @user.posts %>
+          <h3> My Post </h3>
+          <%= render @user.posts.reverse_order %>
         </div>
 
       </div>

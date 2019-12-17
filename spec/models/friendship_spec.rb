@@ -10,24 +10,23 @@ RSpec.describe Friendship, type: :model do
     has_x
   end
 
-  it "creates a friend request" do
+  it 'creates a friend request' do
     user = User.create(valid_user)
     user2 = User.new(valid_user)
-    user2.email = "other@email.com"
+    user2.email = 'other@email.com'
     user2.save
     expect do
       Friendship.create(user_id: user.id, friend_id: user2.id)
     end.to change(Friendship, :count).by(1)
   end
 
-  it "shows user and friend" do
+  it 'shows user and friend' do
     user = User.create(valid_user)
     user2 = User.new(valid_user)
-    user2.email = "other@email.com"
+    user2.email = 'other@email.com'
     user2.save
     friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
     expect(friendship.user.id).to eq(user.id)
     expect(friendship.friend.id).to eq(user2.id)
   end
-
 end

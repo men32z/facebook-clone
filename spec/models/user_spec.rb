@@ -83,37 +83,37 @@ RSpec.describe User, type: :model do
     expect(user.posts.last.content).to eq(example_text)
   end
 
-  it "shows friends throu the method friend" do
+  it 'shows friends throu the method friend' do
     user = User.create(valid_user)
     user2 = User.new(valid_user)
-    user2.email = "other@email.com"
+    user2.email = 'other@email.com'
     user2.save
     friendship = Friendship.create(user_id: user.id, friend_id: user2.id, confirmed: true)
     expect(user.friends.first.id).to eq(user2.id)
   end
 
-  it "shows pending friends throu the method pending_friends" do
+  it 'shows pending friends throu the method pending_friends' do
     user = User.create(valid_user)
     user2 = User.new(valid_user)
-    user2.email = "other@email.com"
+    user2.email = 'other@email.com'
     user2.save
     friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
     expect(user.pending_friends.first.id).to eq(user2.id)
   end
 
-  it "shows friend requests throu the method friend_request" do
+  it 'shows friend requests throu the method friend_request' do
     user = User.create(valid_user)
     user2 = User.new(valid_user)
-    user2.email = "other@email.com"
+    user2.email = 'other@email.com'
     user2.save
     friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
     expect(user2.friend_request.first.id).to eq(user.id)
   end
 
-  it "confirm a friend throu method confirm_friend, and see it throu friend? method." do
+  it 'confirm a friend throu method confirm_friend, and see it throu friend? method.' do
     user = User.create(valid_user)
     user2 = User.new(valid_user)
-    user2.email = "other@email.com"
+    user2.email = 'other@email.com'
     user2.save
     friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
     user2.confirm_friend(user)

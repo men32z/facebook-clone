@@ -100,9 +100,9 @@ RSpec.describe 'Friendship feature', type: :feature do
 
     visit friendships_path
 
-    assert_selector "div[class='friends'] a[href='#{user_path(user2)}']"
-    assert_selector "div[class='pending'] a[href='#{user_path(user3)}']"
-    assert_selector "div[class='incoming'] a[href='#{user_path(user4)}']"
+    assert_selector "a[href='#{user_path(user2)}']"
+    assert_selector "a[href='#{user_path(user3)}']"
+    assert_selector "a[href='#{user_path(user4)}']"
   end
   scenario 'confirm requests and delete friend' do
     user1 = User.create(user_valid)

@@ -39,8 +39,8 @@ class User < ApplicationRecord
   end
 
   def friendship_id(user)
-    friendship = friendships.find { |friend| friend.user == user }
-    friendship ||= friendships.find { |friend| friend.friend == user }
+    friendship = Friendship.where(user_id: id, friend_id: user.id).first
+    friendship ||= Friendship.where(user_id: user.id, friend_id: id).first
     friendship.id
   end
 

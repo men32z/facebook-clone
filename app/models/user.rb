@@ -38,6 +38,12 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
+  def friendship_id(user)
+    friendship = friendships.find { |friend| friend.user == user }
+    friendship ||= friendships.find { |friend| friend.friend == user }
+    friendship.id
+  end
+
   private
 
   def set_default_img

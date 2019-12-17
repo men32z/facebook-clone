@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @post = Post.new
+    @comment = Comment.new
     @user = User.find_by(id: params[:id])
     return if @user
 

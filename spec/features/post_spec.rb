@@ -52,5 +52,61 @@ RSpec.describe 'Post feature', type: :feature do
     expect(page).to have_content user.name
   end
 
-  scenario 'post should display likes and comments'
+  scenario 'post should display likes and comments on timeline' do
+    # forever alone method
+    user = User.create(user_valid)
+    sign_in(user)
+    post = user.posts.create(content: 'this is a post')
+    comment = post.comments.create(content: 'this is a comment', user_id: user.id)
+    Like.create(user_id: user.id, post_id: post.id)
+    visit root_path
+    expect(page).to have_content comment.content
+    assert_selector "span[class='likes']", text: '1'
+  end
+
+  scenario 'user can create a comment successfully in a post in timeline' do
+    user = User.create(user_valid)
+    sign_in(user)
+    user.posts.create(content: 'this is a post')
+    visit root_path
+    example_comment = 'Example_comment'
+    fill_in 'comment_content', with: example_comment
+    click_button 'comment'
+    expect(page).to have_content(example_comment)
+  end
+
+  scenario 'user can create a comment successfully in a post in their profile' do
+    user = User.create(user_valid)
+    sign_in(user)
+    user.posts.create(content: 'this is a post')
+    visit user_path(user.id)
+    example_comment = 'Example_comment'
+    fill_in 'comment_content', with: example_comment
+    click_button 'comment'
+    expect(page).to have_content(example_comment)
+  end
+
+  scenario 'user likes successfully a post in profile' do
+    user = User.create(user_valid)
+    sign_in(user)
+    user.posts.create(content: 'this is a post')
+    visit user_path(user.id)
+    expect do
+      click_on 'like'
+    end.to change(Like, :count).by(1)
+  end
+
+  scenario 'user should like only once on each post' do
+    user = User.create(user_valid)
+    sign_in(user)
+    user.posts.create(content: 'this is a post')
+    visit user_path(user.id)
+    expect do
+      click_on 'like'
+      click_on 'like'
+      click_on 'like'
+      click_on 'like'
+      click_on 'like'
+    end.to change(Like, :count).by(1)
+  end
 end

@@ -1,5 +1,7 @@
 
 @import "bootstrap/scss/bootstrap";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+
 
 body {
   background-color: #e9ebee;
@@ -14,7 +16,7 @@ body {
   height: 315px;
   background-image: url('/filename.jpg');
   background-size: cover;
-  
+
   img {
     bottom: 0;
     margin-bottom: -45px;

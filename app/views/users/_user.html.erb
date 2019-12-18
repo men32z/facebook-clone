@@ -1,3 +1,16 @@
-<%= user.name  %>
-<button class="friend_request"> Send friend request </button>
-<%= link_to  "See profile", user_path(user.id) %> <br>
+<div class="row my-2">
+  <div class="col-12 d-flex">
+    <div class="mr-auto">
+      <%= image_tag( user.photo, width: 40, height: 40 ) %>
+      <b class="ml-3"> <%= user.name %> </b>
+    </div>
+    <div class="ml-auto">
+      <%= link_to  "See profile", user_path(user.id), class:"ml-2 btn btn-info" %>
+      <%= link_to "Send friend request", friendships_path(friend_id: user.id), method: "post", class:"btn btn-light ml-2"%>
+    </div>
+  </div>
+
+</div>
+
+
+

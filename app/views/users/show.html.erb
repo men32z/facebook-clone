@@ -4,9 +4,17 @@
       <div class="col-12">
         <%= image_tag @user.photo, alt: @user.name %>
         <h2><%= @user.name %></h2>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.id == @user.id %>
           <%= link_to 'Edit Profile', edit_user_path(current_user), class:'btn btn-info' %>
         <% end %>
+
+        <% if current_user.pending_friend?(@user) %>
+          <button type="button" class="btn btn-info disabled" name="button">request sent</button>
+        <% end %>
+
+        <% unless current_user.related?(@user)%>
+          <%= link_to "Send friend request", friendships_path(friend_id: @user.id),  class:"btn btn-info", method: "post" %>
+        <% end  %>
       </div>
     </div>
     <div class ="row mt-4">

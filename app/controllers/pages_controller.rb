@@ -5,7 +5,9 @@ class PagesController < ApplicationController
     if user_signed_in?
       @post = Post.new
       @comment = Comment.new
-      @posts = Post.order(:id).reverse_order
+      ids = current_user.friends_ids
+      ids << current_user.id
+      @posts = Post.where("user_id IN (#{ids.join(', ')})").order(:id).reverse_order
       render 'timeline'
     else
       render 'index'

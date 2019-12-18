@@ -88,7 +88,7 @@ RSpec.describe User, type: :model do
     user2 = User.new(valid_user)
     user2.email = 'other@email.com'
     user2.save
-    friendship = Friendship.create(user_id: user.id, friend_id: user2.id, confirmed: true)
+    Friendship.create(user_id: user.id, friend_id: user2.id, confirmed: true)
     expect(user.friends.first.id).to eq(user2.id)
   end
 
@@ -97,7 +97,7 @@ RSpec.describe User, type: :model do
     user2 = User.new(valid_user)
     user2.email = 'other@email.com'
     user2.save
-    friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
+    Friendship.create(user_id: user.id, friend_id: user2.id)
     expect(user.pending_friends.first.id).to eq(user2.id)
   end
 
@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
     user2 = User.new(valid_user)
     user2.email = 'other@email.com'
     user2.save
-    friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
+    Friendship.create(user_id: user.id, friend_id: user2.id)
     expect(user2.friend_request.first.id).to eq(user.id)
   end
 
@@ -115,7 +115,7 @@ RSpec.describe User, type: :model do
     user2 = User.new(valid_user)
     user2.email = 'other@email.com'
     user2.save
-    friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
+    Friendship.create(user_id: user.id, friend_id: user2.id)
     user2.confirm_friend(user)
     expect(user2.friend?(user)).to eq(true)
   end

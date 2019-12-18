@@ -40,11 +40,13 @@ RSpec.describe 'Friendship feature', type: :feature do
 
     visit users_path
     expect(page).to have_content friend_link_text
-    assert_selector "a[href='#{friendships_path}']"
+    assert_selector "a[href='#{friendships_path(friend_id: user2.id)}']"
     click_on friend_link_text
-    assert_selector "div[class='pending'] a[href='#{user_path(user2)}']"
+    assert_selector "div[id='pending']" do
+      assert_selector "a[href='#{user_path(user2)}']"
+    end
     click_on user2.name
-    assert_selector "button[class='disabled']", text: 'request sent'
+    assert_selector "button[class='btn btn-info disabled']", text: 'request sent'
   end
 
   scenario 'send a friend request from the profile' do
@@ -54,11 +56,13 @@ RSpec.describe 'Friendship feature', type: :feature do
 
     visit user_path(user2)
     expect(page).to have_content friend_link_text
-    assert_selector "a[href='#{friendships_path}']"
+    assert_selector "a[href='#{friendships_path(friend_id: user2.id)}']"
     click_on friend_link_text
-    assert_selector "div[class='pending'] a[href='#{user_path(user2)}']"
+    assert_selector "div[id='pending']" do
+      assert_selector "a[href='#{user_path(user2)}']"
+    end
     click_on user2.name
-    assert_selector "button[class='disabled']", text: 'request sent'
+    assert_selector "button[class='btn btn-info disabled']", text: 'request sent'
   end
 
   scenario 'show only friends posts on timeline' do
@@ -99,11 +103,17 @@ RSpec.describe 'Friendship feature', type: :feature do
     Friendship.create(user_id: user4.id, friend_id: user.id)
 
     visit friendships_path
-
-    assert_selector "a[href='#{user_path(user2)}']"
-    assert_selector "a[href='#{user_path(user3)}']"
-    assert_selector "a[href='#{user_path(user4)}']"
+    assert_selector "div[id='friends']" do
+      assert_selector "a[href='#{user_path(user2)}']"
+    end
+    assert_selector "div[id='pending']" do
+      assert_selector "a[href='#{user_path(user3)}']"
+    end
+    assert_selector "div[id='incoming']" do
+      assert_selector "a[href='#{user_path(user4)}']"
+    end
   end
+
   scenario 'confirm requests and delete friend' do
     user1 = User.create(user_valid)
     sign_in user1
@@ -118,7 +128,10 @@ RSpec.describe 'Friendship feature', type: :feature do
     sign_in user2
     visit friendships_path
     click_on 'Accept'
-    assert_selector "div[class='friends'] a[href='#{user_path(user1)}']"
+    assert_selector "div[id='friends']" do
+      assert_selector "a[href='#{user_path(user1)}']"
+    end
+
     # now its our friend and we are going to delete him
 
     click_on 'Delete'

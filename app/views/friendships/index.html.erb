@@ -3,27 +3,48 @@
   <div class="col-12 col-md-6 p-2 mt-5 bg-white">
     <h1>Friends</h1>
   </div>
-  
-  <div class="col-12 col-md-6 p-2 mt-5 bg-white incoming">
+
+  <div class="col-12 col-md-6 p-2 mt-5 bg-white" id="incoming">
     Incoming
     <% current_user.friend_request.each do | user |  %>
-      <%= link_to  user.name, user_path(user.id) %>
-      <%= link_to  "Accept", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'patch'%>
+      <div class="col-12 d-flex mb-3">
+        <div class="mr-auto">
+          <%= image_tag( user.photo, width: 40, height: 40 ) %>
+          <b><%= link_to  user.name, user_path(user.id) %></b>
+        </div>
+        <div class="ml-auto">
+          <%= link_to  "Accept", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'patch'%>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <div class="col-12 col-md-6 p-2 mt-5 bg-white pending">
+  <div class="col-12 col-md-6 p-2 mt-5 bg-white" id="pending">
     Pending
     <% current_user.pending_friends.each do |user|  %>
-      <%= link_to  user.name, user_path(user.id) %>
+      <div class="col-12 d-flex mb-3">
+        <div class="mr-auto">
+          <%= image_tag( user.photo, width: 40, height: 40 ) %>
+          <b><%= link_to  user.name, user_path(user.id) %></b>
+        </div>
+      </div>
+
     <% end %>
   </div>
 
-  <div class="col-12 col-md-6 p-2 mt-5 bg-white friends">
+  <div class="col-12 col-md-6 p-2 mt-5 bg-white" id="friends">
     Friends
     <% current_user.friends.each do | user |  %>
-      <%= link_to  user.name, user_path(user.id) %>
-      <%= link_to  "Delete", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'delete'%>
+      <div class="col-12 d-flex mb-3">
+        <div class="mr-auto">
+          <%= image_tag( user.photo, width: 40, height: 40 ) %>
+          <b><%= link_to  user.name, user_path(user.id) %></b>
+        </div>
+        <div class="ml-auto">
+          <%= link_to  "Delete", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'delete'%>
+        </div>
+      </div>
+
     <% end %>
   </div>
 </div>

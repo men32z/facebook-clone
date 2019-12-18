@@ -1,18 +1,18 @@
     1 COMPLETED
     2 Users must sign in to see anything except the sign in page.
     3 COMPLETED
-    4 Users can send Friend Requests to other Users.
-    5 A User must accept the Friend Request to become friends.
-    6 The Friend Request shows up in the notifications section of a User’s navbar.
+    4 COMPLETED
+    5 COMPLETED
+    6 COMPLETED
     6.1 COMPLETED
     7 COMPLETED
     8 COMPLETED
     9 COMPLETED
     10 COMPLETED
-    11 Treat the Posts Index page like the real Facebook’s “Timeline” feature – show all the recent posts from the current user and users she is friends with.
+    11 COMPLETED
     12 COMPLETED
     13 COMPLETED
-    14 The Users Index page lists all users and buttons for sending Friend Requests to those who are not already friends or who don’t already have a pending request.
+    14 COMPLETED
     15 Sign in should use Omniauth to allow a user to sign in with their real Facebook account. See the RailsCast on FB authentication with Devise for a step-by-step look at how it works.
     16 AVOID
     17 Deploy your App to Heroku.

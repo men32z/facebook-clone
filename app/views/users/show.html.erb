@@ -12,7 +12,7 @@
           <button type="button" class="btn btn-info disabled" name="button">request sent</button>
         <% end %>
 
-        <% unless current_user.related?(@user)%>
+        <% unless current_user.related?(@user) || current_user.id == @user.id %>
           <%= link_to "Send friend request", friendships_path(friend_id: @user.id),  class:"btn btn-info", method: "post" %>
         <% end  %>
       </div>

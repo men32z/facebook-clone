@@ -14,6 +14,8 @@ gem 'pg'
 
 gem 'devise'
 
+gem 'faker'
+
 gem 'omniauth-facebook'
 
 group :development, :test do

@@ -5,16 +5,16 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", root_path, class:"nav-link" %>
+      </li>
+    <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to friendships_path, class:"nav-link" do %>
           <i class="material-icons" style="font-size: 1rem;">notification_important</i>
             <%= current_user.friend_request.count %> Friend request
         <% end %>
-    </li>
-      <li class="nav-item active">
-        <%= link_to "Home", root_path, class:"nav-link" %>
       </li>
-    <% if user_signed_in? %>
       <li class="nav-item">
         <span class='nav-link'><%= current_user.name %></span>
       </li>

@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :likes, only: [:create]
   resources :friendships, only: [:index, :update, :create, :destroy]
   root to: 'pages#index'
-
+  get '/auth/facebook/callback', to: 'sessions#create'
 end

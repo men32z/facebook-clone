@@ -80,6 +80,6 @@ class User < ApplicationRecord
   private
 
   def set_default_img
-    self.photo = '/default_profile.jpg'
+    self.photo = '/default_profile.jpg' if photo.nil?
   end
 end

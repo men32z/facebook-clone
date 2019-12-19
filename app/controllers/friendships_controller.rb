@@ -15,8 +15,12 @@ class FriendshipsController < ApplicationController
   def index; end
 
   def update
-    user = User.find_by(id: params[:user_id])
-    current_user.confirm_friend(user) if user
+    # confirm only if we are involved.
+
+    friendship = Friendship.where(id: params[:id], user_id: current_user.id, friend_id: params[:user_id]).first
+
+    friendship&.confirmed = true
+    friendship&.save
     redirect_to friendships_path
   end
 

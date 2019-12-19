@@ -29,7 +29,7 @@ RSpec.describe FriendshipsController, type: :controller do
       expect do
         post :create, params: { friend_id: user2.id }
         expect(response).to have_http_status(302)
-      end.to change(Friendship, :count).by(1)
+      end.to change(Friendship, :count).by(2)
     end
   end
 
@@ -41,10 +41,14 @@ RSpec.describe FriendshipsController, type: :controller do
       user2.save
       sign_in user2
       friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
-      patch :update, params: { user_id: user.id, id: friendship.id }
+      friendship_mirror = Friendship.where(user_id: friendship.friend_id, friend_id: friendship.user_id).first
+
+      patch :update, params: { user_id: user.id, id: friendship_mirror.id }
       expect(response).to have_http_status(302)
       friendship.reload
+      friendship_mirror.reload
       expect(friendship.confirmed).to eq(true)
+      expect(friendship_mirror.confirmed).to eq(true)
     end
   end
 

@@ -1,13 +1,23 @@
 # frozen_string_literal: true
 
 class Friendship < ApplicationRecord
-  validate :users_are_not_already_friends, on: :create
+  after_create :full_friends
+  after_update :confirm_full_friends
   belongs_to :user
   belongs_to :friend, class_name: 'User'
+  validates :user_id, uniqueness: { scope: :friend_id, message: 'Already sent!' }
 
-  def users_are_not_already_friends
-    reverse_friendship = Friendship.where(user_id: friend_id, friend_id: user_id).exists?
-    reg_friendship = Friendship.where(user_id: user_id, friend_id: friend_id).exists?
-    errors.add(:user_id, 'Already friends!') if reverse_friendship || reg_friendship
+  private
+
+  def confirm_full_friends
+    mirror = Friendship.where(user_id: friend_id, friend_id: user_id).first
+    return unless mirror && !mirror.confirmed
+
+    mirror.confirmed = true
+    mirror.save
+  end
+
+  def full_friends
+    Friendship.create(user_id: friend_id, friend_id: user_id)
   end
 end

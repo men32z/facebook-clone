@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:create]
   resources :comments, only: [:create]
   resources :likes, only: [:create]
+  resources :friendships, only: [:index, :update, :create, :destroy]
   root to: 'pages#index'
 
 end

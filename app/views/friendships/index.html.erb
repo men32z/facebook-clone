@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="col-12 col-md-6 p-2 mt-5 bg-white">
+    <h1>Friends</h1>
+  </div>
+
+  <div class="col-12 col-md-6 p-2 mt-5 bg-white" id="incoming">
+    <h5>Friend request</h5>
+    <% current_user.friend_request.each do | user |  %>
+      <div class="col-12 d-flex mb-3">
+        <div class="mr-auto">
+          <%= image_tag( user.photo, width: 40, height: 40 ) %>
+          <b><%= link_to  user.name, user_path(user.id) %></b>
+        </div>
+        <div class="ml-auto">
+          <%= link_to  "Accept", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'patch'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-12 col-md-6 p-2 mt-5 bg-white" id="pending">
+    <h5>Pending</h5>
+    <% current_user.pending_friends.each do |user|  %>
+      <div class="col-12 d-flex mb-3">
+        <div class="mr-auto">
+          <%= image_tag( user.photo, width: 40, height: 40 ) %>
+          <b><%= link_to  user.name, user_path(user.id) %></b>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="col-12 col-md-6 p-2 mt-5 bg-white" id="friends">
+    <h5>Friends</h5>
+    <% current_user.friends.each do | user |  %>
+      <div class="col-12 d-flex mb-3">
+        <div class="mr-auto">
+          <%= image_tag( user.photo, width: 40, height: 40 ) %>
+          <b><%= link_to  user.name, user_path(user.id) %></b>
+        </div>
+        <div class="ml-auto">
+          <%= link_to  "Delete", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'delete'%>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

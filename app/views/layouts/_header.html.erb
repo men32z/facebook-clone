@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg">
   <%= link_to "Facebook Clone", root_url, class:'navbar-brand' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,13 @@
       </li>
     <% if user_signed_in? %>
       <li class="nav-item">
-        <%= current_user.name %>
+        <%= link_to friendships_path, class:"nav-link" do %>
+          <i class="material-icons" style="font-size: 1rem;">notification_important</i>
+            <%= current_user.friend_request.count %> Friend request
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <span class='nav-link'><%= current_user.name %></span>
       </li>
       <li class="nav-item">
         <%= link_to "Profile", user_path(current_user), class:"nav-link" %>

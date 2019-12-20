@@ -100,9 +100,13 @@ RSpec.describe 'Users feature', type: :feature do
 
   scenario 'Index Should show the list of users' do
     user = User.create(user_valid)
+    user2 = User.new(user_valid)
+    user2.email = 'other@emai.com'
+    user2.save
+    sign_in user
     visit users_path
     expect(page).to have_content user.name
-    assert_selector "a[href='#{user_path(user)}']"
-    assert_selector "button[class='friend_request']"
+    assert_selector "a[href='#{user_path(user2)}']"
+    assert_selector "a[href='#{friendships_path(friend_id: user2.id)}']"
   end
 end

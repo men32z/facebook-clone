@@ -9,6 +9,9 @@ body {
 
 .navbar {
   background-color: #4267B2;
+  a, span {
+    color: white;
+  }
 }
 
 .profile-header{
@@ -35,7 +38,7 @@ body {
     position: absolute;
   }
 
-  a {
+  a, button {
     position: absolute;
     bottom: 10px;
     right: 10px;

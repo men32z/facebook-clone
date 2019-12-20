@@ -40,7 +40,7 @@ RSpec.describe FriendshipsController, type: :controller do
       user2.email = 'other@email.com'
       user2.save
       sign_in user2
-      friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
+      friendship = Friendship.create(user_id: user.id, friend_id: user2.id, confirmed: true)
       friendship_mirror = Friendship.where(user_id: friendship.friend_id, friend_id: friendship.user_id).first
 
       patch :update, params: { user_id: user.id, id: friendship_mirror.id }

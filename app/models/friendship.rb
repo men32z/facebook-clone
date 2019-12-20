@@ -2,7 +2,6 @@
 
 class Friendship < ApplicationRecord
   after_create :full_friends
-  after_update :confirm_full_friends
   belongs_to :user
   belongs_to :friend, class_name: 'User'
   validates :user_id, uniqueness: { scope: :friend_id, message: 'Already sent!' }

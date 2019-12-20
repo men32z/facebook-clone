@@ -3,7 +3,7 @@
 class FriendshipsController < ApplicationController
   def create
     friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
-    friendship.confirmed = false
+    friendship.confirmed = true
     if friendship.save
       flash.now[:success] = 'Friend request sent'
     else

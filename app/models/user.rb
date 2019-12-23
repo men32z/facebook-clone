@@ -15,15 +15,11 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
+    friendships.map(&:friend) & inverse_friendships.map(&:user)
   end
 
   def friends_ids
-    friends_array = friendships.map { |friendship| friendship.friend.id if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user.id if friendship.confirmed }
-    friends_array.compact
+    friendships.map(&:friend_id) & inverse_friendships.map(&:user_id)
   end
 
   def related?(user)
@@ -32,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
+    friendships.map(&:friend) - inverse_friendships.map(&:user)
   end
 
   def pending_friend?(user)
@@ -40,17 +36,11 @@ class User < ApplicationRecord
   end
 
   def friend_request
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+    inverse_friendships.map(&:user) - friendships.map(&:friend)
   end
 
   def friend?(user)
     friends.include?(user)
-  end
-
-  def friendship_id(user)
-    friendship = Friendship.where(user_id: id, friend_id: user.id).first
-    friendship ||= Friendship.where(user_id: user.id, friend_id: id).first
-    friendship.id
   end
 
   private

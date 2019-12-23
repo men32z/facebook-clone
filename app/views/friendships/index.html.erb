@@ -11,7 +11,7 @@
           <b><%= link_to  user.name, user_path(user.id) %></b>
         </div>
         <div class="ml-auto">
-          <%= link_to  "Accept", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'patch'%>
+          <%= link_to  "Accept", friendships_update_path( user_id: user.id ), method: 'patch'%>
         </div>
       </div>
     <% end %>
@@ -39,7 +39,7 @@
           <b><%= link_to  user.name, user_path(user.id) %></b>
         </div>
         <div class="ml-auto">
-          <%= link_to  "Delete", friendship_path(id: user.friendship_id(current_user), user_id: user.id ), method: 'delete'%>
+          <%= link_to  "Delete", friendships_delete_path( user_id: user.id ), method: 'delete'%>
         </div>
       </div>
 

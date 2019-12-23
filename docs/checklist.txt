@@ -19,3 +19,6 @@
     18 Set up the SendGrid add-on and start sending real emails. It’s free for low usage tiers.
     19 Refactor the delete method for the friendships controller
     20 Duplicated friends error is due to bugs in confirmation
+
+A(user) B(friend)    ALWAYS CONFIRMED
+A(friend) B(user)    WAITS FOR CONFIRMATION

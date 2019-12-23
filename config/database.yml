@@ -25,4 +25,8 @@ test:
 
 production:
   <<: *default
-  database: facebook_clone_production
+  database: d8mhj2b0vhedf6
+  adapter: postgresql
+  username: nqdcnscypnkwdu
+  password: 7af1d543eee53412d793c0284393ef5dce1308adee605d63438ddf5fcdc86e11
+  host: ec2-23-21-91-183.compute-1.amazonaws.com

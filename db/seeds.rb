@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 30.times do |x|
-  User.create(name: "minion#{x}", email: "user#{x}@monstersinc.com", password: 'wasausky')
+  User.create(name: Faker::Name.unique.name, email: "user#{x}@monstersinc.com", password: 'wasausky')
 end

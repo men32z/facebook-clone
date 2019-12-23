@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
+  before_action :login_verify
   def create
     like = Like.where(post_id: params[:post_id], user_id: current_user.id).first
     if like.nil?

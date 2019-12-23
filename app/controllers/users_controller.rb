@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :login_verify
   def index
     @users = User.where("id !=  #{current_user.id}")
   end

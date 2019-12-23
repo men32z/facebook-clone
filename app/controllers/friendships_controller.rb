@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class FriendshipsController < ApplicationController
+  before_action :login_verify
   def create
     friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
     if friendship.save

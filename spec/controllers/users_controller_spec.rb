@@ -13,6 +13,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'GET#show' do
     it 'returns http success' do
       user = User.create(user_valid)
+      sign_in user
       get :show, params: { id: user.id }
       expect(response).to have_http_status(:success)
     end
@@ -21,6 +22,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'GET#edit' do
     it 'returns http success' do
       user = User.create(user_valid)
+      sign_in user
       get :edit, params: { id: user.id }
       expect(response).to have_http_status(:success)
     end
@@ -29,6 +31,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'PATCH#update' do
     it 'returns http success' do
       user = User.create(user_valid)
+      sign_in user
       new_name = 'new name'
       patch :update, params: { id: user.id, user: { name: new_name } }
       expect(response).to have_http_status(302)

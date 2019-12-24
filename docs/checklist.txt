@@ -13,7 +13,7 @@
     12 COMPLETED
     13 COMPLETED
     14 COMPLETED
-    15 Sign in should use Omniauth to allow a user to sign in with their real Facebook account. See the RailsCast on FB authentication with Devise for a step-by-step look at how it works.
+    15 COMPLETED
     16 AVOID
     17 Deploy your App to Heroku.
     18 Set up the SendGrid add-on and start sending real emails. It’s free for low usage tiers.

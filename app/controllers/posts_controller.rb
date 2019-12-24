@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :login_verify
   def create
     post = Post.new(post_params)
     post.user_id = current_user.id

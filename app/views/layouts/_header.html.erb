@@ -10,6 +10,9 @@
       </li>
     <% if user_signed_in? %>
       <li class="nav-item">
+        <%= link_to "Search friends", users_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
         <%= link_to friendships_path, class:"nav-link" do %>
           <i class="material-icons" style="font-size: 1rem;">notification_important</i>
             <%= current_user.friend_request.count %> Friend request

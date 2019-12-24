@@ -71,7 +71,8 @@ RSpec.describe 'Friendship feature', type: :feature do
 
     user2 = User.create(user_valid2)
     # second is our friend
-    Friendship.create(user_id: user.id, friend_id: user2.id, confirmed: true)
+    Friendship.create(user_id: user.id, friend_id: user2.id)
+    Friendship.create(user_id: user2.id, friend_id: user.id)
 
     user3 = User.create(user_valid3)
 
@@ -93,7 +94,8 @@ RSpec.describe 'Friendship feature', type: :feature do
 
     user2 = User.create(user_valid2)
     # second is our friend
-    Friendship.create(user_id: user.id, friend_id: user2.id, confirmed: true)
+    Friendship.create(user_id: user.id, friend_id: user2.id)
+    Friendship.create(user_id: user2.id, friend_id: user.id)
 
     user3 = User.create(user_valid3)
     # we send request to this one.

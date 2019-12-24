@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:create]
   resources :comments, only: [:create]
   resources :likes, only: [:create]
-  resources :friendships, only: [:index, :update, :create, :destroy]
+  resources :friendships, only: [:index, :create]
   root to: 'pages#index'
+  patch 'friendships/update/:user_id', to: 'friendships#update', as: 'friendships_update'
+  delete 'friendships/delete/:user_id', to: 'friendships#destroy', as: 'friendships_delete'
 end

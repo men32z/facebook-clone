@@ -83,12 +83,13 @@ RSpec.describe User, type: :model do
     expect(user.posts.last.content).to eq(example_text)
   end
 
-  it 'shows friends throu the method friend' do
+  it 'shows friends throu the friend method ' do
     user = User.create(valid_user)
     user2 = User.new(valid_user)
     user2.email = 'other@email.com'
     user2.save
-    Friendship.create(user_id: user.id, friend_id: user2.id, confirmed: true)
+    Friendship.create(user_id: user.id, friend_id: user2.id)
+    Friendship.create(user_id: user2.id, friend_id: user.id)
     expect(user.friends.first.id).to eq(user2.id)
   end
 
@@ -108,15 +109,5 @@ RSpec.describe User, type: :model do
     user2.save
     Friendship.create(user_id: user.id, friend_id: user2.id)
     expect(user2.friend_request.first.id).to eq(user.id)
-  end
-
-  it 'confirm a friend throu method confirm_friend, and see it throu friend? method.' do
-    user = User.create(valid_user)
-    user2 = User.new(valid_user)
-    user2.email = 'other@email.com'
-    user2.save
-    Friendship.create(user_id: user.id, friend_id: user2.id)
-    user2.confirm_friend(user)
-    expect(user2.friend?(user)).to eq(true)
   end
 end

@@ -33,5 +33,5 @@ $ rails server
 ```
 
 Or Visit
-```
+
 [Live version](https://sheltered-sands-86231.herokuapp.com)

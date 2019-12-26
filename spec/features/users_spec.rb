@@ -109,4 +109,10 @@ RSpec.describe 'Users feature', type: :feature do
     assert_selector "a[href='#{user_path(user2)}']"
     assert_selector "a[href='#{friendships_path(friend_id: user2.id)}']"
   end
+
+  scenario 'unsigned user can\'t see other users profile' do
+    user = User.create(user_valid)
+    visit user_path(user.id)
+    expect(page).to_not have_content user.name
+  end
 end

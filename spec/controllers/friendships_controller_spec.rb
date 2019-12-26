@@ -41,10 +41,13 @@ RSpec.describe FriendshipsController, type: :controller do
       user2.save
       sign_in user2
       friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
-      patch :update, params: { user_id: user.id, id: friendship.id }
-      expect(response).to have_http_status(302)
-      friendship.reload
-      expect(friendship.confirmed).to eq(true)
+
+      expect do
+        patch :update, params: { user_id: user.id, id: friendship.id }
+        expect(response).to have_http_status(302)
+      end.to change(Friendship, :count).by(1)
+      confirmed = Friendship.create(user_id: user2.id, friend_id: user.id)
+      expect(confirmed).to_not eq(nil)
     end
   end
 
@@ -55,8 +58,9 @@ RSpec.describe FriendshipsController, type: :controller do
       user2 = User.new(user_valid)
       user2.email = 'other@email.com'
       user2.save
-      friendship = Friendship.create(user_id: user.id, friend_id: user2.id)
-      delete :destroy, params: { user_id: user.id, id: friendship.id }
+      Friendship.create(user_id: user.id, friend_id: user2.id)
+      Friendship.create(user_id: user2.id, friend_id: user.id)
+      delete :destroy, params: { user_id: user2.id }
       expect(response).to have_http_status(302)
       expect(user.friends.count).to eq(0)
     end

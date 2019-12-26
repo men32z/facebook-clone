@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 mt-5">
+      <h3><b>Connect with bots and some testers</b> </h3>
+      <h4>This is a student's project</h4>
+      <p>to see the project you must <%= link_to 'sign in here', new_user_session_path %> </p>
+
+      <%= image_tag "fb-star.png" %>  <b>This is a microverse project</b>
+      following <%= link_to "The odin project", "https://www.theodinproject.com/" %> tutorials <br><br>
+      <%= image_tag "fb-paper.png" %> <b>MIT License</b> a student's project<br><br>
+      <%= image_tag "fb-circles.png" %> <b>Have fun</b> this is not the real facebook btw<br>
+    </div>
+    <div class="col-12 col-md-4 mt-5">
+      <%= render "layouts/login"%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-5 pt-5">
+      By <%= link_to "Eduardo Gutiérrez", "https://github.com/fedgut" %>,
+      <%= link_to "Luis Preza", "https://github.com/men32z" %>.
+      <%= link_to "Microverse", "https://www.microverse.org/ " %>  &hearts;
+    </div>
+  </div>
+</div>

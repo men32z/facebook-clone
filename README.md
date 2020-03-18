@@ -6,7 +6,7 @@ Built following the test driven development paradigm, where the test are built f
 
 ## Built With:
 
-Ruby, Ruby on rails, postgresql, OmniAuth, deployed in [Heroku](https://sheltered-sands-86231.herokuapp.com) 
+Ruby, Ruby on rails, postgresql, OmniAuth, deployed in [Heroku](https://men32z-facebook-clone.herokuapp.com) 
 
 ## Author
 Eduardo Gutierrez https://github.com/fedgut <br>

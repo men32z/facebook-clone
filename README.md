@@ -4,7 +4,7 @@
 
 ![screenshot](https://raw.githubusercontent.com/men32z/facebook-clone/development/docs/fb.png)
 
-Built following the test driven development paradigm, where the test are built first, then the code is written. You can take a look at the project specs  [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
+Built following the test driven development paradigm, where the tests are built first, then the code is written. You can take a look at the project specs  [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
 
 ## Built With
 
@@ -49,7 +49,6 @@ Or Visit
 👤 **Luis Preza**
 
 - Github: [@men32z](https://github.com/men32z)
-- Twitter: [@men32z](https://twitter.com/men32z)
 - Linkedin: [men32z](https://www.linkedin.com/in/men32z/)
 
 👤 **Eduardo Gutierrez**

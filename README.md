@@ -1,4 +1,6 @@
-# Collaborative Project: Facebook Clone
+# Facebook Clone
+
+![screenshot](https://raw.githubusercontent.com/men32z/facebook-clone/development/docs/fb.png)
 
 ## Project Specifications:
 
@@ -34,4 +36,4 @@ $ rails server
 
 Or Visit
 
-[Live version](https://sheltered-sands-86231.herokuapp.com)
+[Live version](https://men32z-facebook-clone.herokuapp.com/)

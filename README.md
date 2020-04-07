@@ -3,6 +3,8 @@
 > A social media app designed to mimic some of Facebook's key features, such as the ability to create posts, send friend requests, and upload photos. Built using Ruby and Rails. 
 
 ![screenshot](https://raw.githubusercontent.com/men32z/facebook-clone/development/docs/fb.png)
+![screenshot2](https://raw.githubusercontent.com/men32z/facebook-clone/development/docs/sc1.png)
+![screenshot3](https://raw.githubusercontent.com/men32z/facebook-clone/development/docs/sc2.png)
 
 Built following the test driven development paradigm, where the tests are built first, then the code is written. You can take a look at the project specs  [here](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
 
@@ -17,6 +19,12 @@ Built following the test driven development paradigm, where the tests are built 
 ## Live Demo
 
 [Live Demo Link](https://men32z-facebook-clone.herokuapp.com)
+
+you can create an account or you can use these credentials.
+```
+email: 'test@test.com'
+password: '123123'
+```
 
 
 ## Getting started
@@ -42,6 +50,22 @@ $ rails server
 Or Visit
 
 [Live version](https://men32z-facebook-clone.herokuapp.com/)
+
+
+### Run tests
+
+```
+bundle exec rspec
+```
+
+## Upcoming Features
+
+This is a complete project but stills lacking original facebook functionality, I will be implementing the following functionality in future versions.
+
+- Editing and Deleting comments. 
+- Link to profile from comments.
+- UI general Improve (colors, fonts, boxes).
+- Frontend UI implementation with the React framework.
 
 
 ## Authors

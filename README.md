@@ -60,12 +60,12 @@ bundle exec rspec
 
 ## Upcoming Features
 
-This is a complete project but stills lacking original facebook functionality, I will be implementing the following functionality in future versions.
+This is a complete project, but stills lacks some of Facebook's original functionality. I will be implementing the following functionalities in future versions: 
 
-- Editing and Deleting comments. 
-- Link to profile from comments.
-- UI general Improve (colors, fonts, boxes).
-- Frontend UI implementation with the React framework.
+- Editing and deleting comments.
+- Linking to profile from comments.
+- General UI improvements (colors, fonts, boxes).
+- Frontend UI implementation with React.
 
 
 ## Authors
